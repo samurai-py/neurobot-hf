@@ -1,7 +1,7 @@
 from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chat_models import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
+from langchain.memory import ConversationBufferMemory, ConversationSummaryMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain.llms import HuggingFaceHub
 
