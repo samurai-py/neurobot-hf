@@ -8,7 +8,7 @@ def main():
 
     st.set_page_config(page_title='ChatPDF Dataway', page_icon=':books:')
 
-    st.header('Converse com seus arquivos :robot_face:')
+    st.header('Converse com seus arquivos')
     user_question = st.text_input("Faça uma pergunta para mim!")
 
     if('conversation' not in st.session_state):
@@ -16,31 +16,15 @@ def main():
 
     if(user_question):
         
-        try:
-        
-            response = st.session_state.conversation(user_question)['chat_history']
+        response = st.session_state.conversation(user_question)['chat_history']
 
-            for i, text_message in enumerate(response):
+        for i, text_message in enumerate(response):
 
-                if(i % 2 == 0):
-                    message(text_message.content, is_user=True, key=str(i) + '_user')
+            if(i % 2 == 0):
+                message(text_message.content, is_user=True, key=str(i) + '_user')
 
-                else:
-                    message(text_message.content, is_user=False, key=str(i) + '_bot')
-        
-        except:
-            
-            st.session_state.conversation = chatbot.create_conversation_chain()
-            
-            response = st.session_state.conversation(user_question)['chat_history']
-            
-            for i, text_message in enumerate(response):
-
-                if(i % 2 == 0):
-                    message(text_message.content, is_user=True, key=str(i) + '_user')
-
-                else:
-                    message(text_message.content, is_user=False, key=str(i) + '_bot')
+            else:
+                message(text_message.content, is_user=False, key=str(i) + '_bot')
 
 
 
